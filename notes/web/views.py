@@ -97,20 +97,14 @@ def profile(request):
     profile = get_profile()
     notes_count = len(get_notes())
 
-    def on_delete():
-        Profile.objects.filter(pk=profile.pk).delete()
-        Note.objects.all().delete()
-        return redirect('home')
-
     context = {
         'profile': profile,
         'notes_count': notes_count,
-        # 'on_delete': on_delete,
     }
     return render(request, 'profile.html', context)
 
 
-def dell(request):
+def delete_profile(request):
     profile = get_profile()
     Profile.objects.filter(pk=profile.pk).delete()
     Note.objects.all().delete()

@@ -1,6 +1,6 @@
 from django.urls import path
 
-from notes.web.views import home, add_note, edit_note, delete_note, note_details, profile, add_profile, dell
+from notes.web.views import home, add_note, edit_note, delete_note, note_details, profile, add_profile, delete_profile
 
 urlpatterns = (
     path('', home, name='home'),
@@ -10,5 +10,5 @@ urlpatterns = (
     path('delete/<int:pk>', delete_note, name='delete note'),
     path('details/<int:pk>', note_details, name='note details'),
     path('profile/', profile, name='profile'),
-    path('dell/', dell, name='dell'),
+    path('profile/delete/', delete_profile, name='delete profile'),
 )
