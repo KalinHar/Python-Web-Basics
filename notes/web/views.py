@@ -25,7 +25,8 @@ def home(request):
         start_page = 'home-with-profile.html'
     context = {
         'profile': profile,
-        'notes': notes
+        'notes': notes,
+        'add_note': True,
     }
 
     return render(request, start_page, context)
@@ -43,6 +44,7 @@ def add_note(request):
     context = {
         'form': form,
         'profile': get_profile(),
+        'add_note': False,
     }
     return render(request, 'note-create.html', context)
 
@@ -61,6 +63,7 @@ def edit_note(request, pk):
         'form': form,
         'note': note,
         'profile': get_profile(),
+        'add_note': True,
     }
     return render(request, 'note-edit.html', context)
 
@@ -78,7 +81,8 @@ def delete_note(request, pk):
     context = {
         'form': form,
         'note': note,
-        'profile': get_profile()
+        'profile': get_profile(),
+        'add_note': True,
     }
     return render(request, 'note-delete.html', context)
 
@@ -87,7 +91,8 @@ def note_details(request, pk):
     note = Note.objects.get(pk=pk)
     context = {
         'note': note,
-        'profile': get_profile()
+        'profile': get_profile(),
+        'add_note': True,
     }
 
     return render(request, 'note-details.html', context)
@@ -100,6 +105,7 @@ def profile(request):
     context = {
         'profile': profile,
         'notes_count': notes_count,
+        'add_note': True,
     }
     return render(request, 'profile.html', context)
 

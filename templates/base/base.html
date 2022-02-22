@@ -17,7 +17,9 @@
                     <li><a href="{% url 'home' %}">Notes</a></li>
                     {% if profile %}
                         <li class="right">
-                            <a href="{% url 'add note' %}">Add Note</a>
+                            {% if add_note %}
+                                <a href="{% url 'add note' %}">Add Note</a>
+                            {% endif %}
                             <a href="{% url 'profile' %}">Profile</a>
                         </li>
                     {% endif %}

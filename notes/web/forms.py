@@ -4,6 +4,11 @@ from notes.web.models import Profile, Note
 
 
 class CreateProfileForm(forms.ModelForm):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        for _, field in self.fields.items():
+            field.label_suffix = ''
+
     class Meta:
         model = Profile
         fields = ('first_name', 'last_name', 'age', 'image_url')
@@ -13,6 +18,11 @@ class CreateProfileForm(forms.ModelForm):
 
 
 class CreateNoteForm(forms.ModelForm):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        for _, field in self.fields.items():
+            field.label_suffix = ''
+
     class Meta:
         model = Note
         fields = ('title', 'content', 'image_url')
@@ -22,6 +32,11 @@ class CreateNoteForm(forms.ModelForm):
 
 
 class EditNoteForm(forms.ModelForm):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        for _, field in self.fields.items():
+            field.label_suffix = ''
+
     class Meta:
         model = Note
         fields = ('title', 'content', 'image_url')
@@ -35,6 +50,7 @@ class DeleteNoteForm(forms.ModelForm):
         super().__init__(*args, **kwargs)
         for _, field in self.fields.items():
             field.disabled = True
+            field.label_suffix = ''
 
     def save(self, commit=True):
         self.instance.delete()
